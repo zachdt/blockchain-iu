@@ -13,11 +13,22 @@ service cloud.firestore {
       allow update, delete: if request.auth.uid == resource.data.createdBy;
     }
 
-    match /subscriptions/{subscription} {
-      allow read: if request.auth.uid == resource.data.createdBy;
-      allow create: if request.auth.uid == request.resource.data.createdBy;
-      allow update, delete: if request.auth.uid == resource.data.createdBy;
+    match /events/{event} {
+      allow read: if true;
+      allow create: if request.auth.email == 'zachdt@gmail.com';
+      allow update, delete: if request.auth.email == 'zachdt@gmail.com';
+    }
+    
+    match /eventHeld/{eventHeld} {
+      allow read: if true;
+      allow create: if request.auth.email == 'zachdt@gmail.com';
+      allow update, delete: if request.auth.email == 'zachdt@gmail.com';
     }
 
+    match /eventHeld/attend/{attend} {
+      allow read: if true;
+      allow create: if request.auth.email == 'zachdt@gmail.com';
+      allow update, delete: if request.auth.email = 'zachdt@gmail.com';
+    }
   }
 }

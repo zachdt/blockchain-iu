@@ -4,7 +4,6 @@ import logIn from '../../actions/logIn'
 import FirebaseAuth from '../misc/FirebaseAuth'
 import Error from '../misc/Error'
 import Profile from './Profile'
-import Subscription from './Subscription'
 import {
   Page,
 } from '../../styles/layout'
@@ -32,7 +31,6 @@ const Account = () => (
         return <div>
           <Profile auth={auth} />
           <hr />
-          <Subscription auth={auth} />
         </div>
 
       }}

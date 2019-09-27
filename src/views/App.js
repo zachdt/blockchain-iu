@@ -1,7 +1,6 @@
 import Firebase from 'firebase/app'
 import { FirestoreProvider } from 'react-firestore'
 import React from 'react'
-import ReactGA from 'react-ga'
 import { BrowserRouter, Route } from 'react-router-dom'
 
 import ErrorBoundary from './misc/ErrorBoundary'
@@ -15,7 +14,6 @@ const App = () => (
       <ErrorBoundary>
         <Layout>
           <Route path="/" component={ScrollToTop}/>
-          <Route path="/" component={Analytics}/>
           <Routes />
         </Layout>
       </ErrorBoundary>
@@ -38,11 +36,6 @@ class ScrollToTop extends React.Component {
 
 // Track Google Analytics page view for every route
 // https://github.com/react-ga/react-ga/issues/122#issuecomment-319546248
-const Analytics = ({location}) => {
-  const page = location.pathname + location.search
-  ReactGA.set({ page })
-  ReactGA.pageview(page)
-  return null
-}
+
 
 export default App

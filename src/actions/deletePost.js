@@ -1,12 +1,6 @@
 import Firebase from 'firebase/app'
-import ReactGA from 'react-ga'
 
 const deletePost = post => {
-
-  ReactGA.event({
-    category: 'Post',
-    action: 'Delete post',
-  })
 
   return Firebase.firestore()
     .collection('posts')

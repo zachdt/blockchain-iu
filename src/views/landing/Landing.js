@@ -2,7 +2,6 @@ import React from 'react'
 import { FirestoreCollection } from 'react-firestore'
 
 import Error from '../misc/Error'
-import FireflySubscription from '../misc/FireflySubscription'
 import {
   InternalLink,
 } from '../../styles/links'
@@ -10,12 +9,11 @@ import {
   Page,
 } from '../../styles/layout'
 
-const PostList = () => (
+const Landing = () => (
   <Page>
-    <InternalLink to="/new">New post</InternalLink>
     <hr/>
     <FirestoreCollection
-      path={'posts'}
+      path={'events'}
       sort="_likeCount:desc"
     >
       { ({error, isLoading, data}) => {
@@ -29,7 +27,7 @@ const PostList = () => (
         }
 
         if (data.length === 0) {
-          return <p>No posts yet!</p>
+          return <p>No upcoming events... stay tuned</p>
         }
 
         return <div>
@@ -50,32 +48,7 @@ const PostList = () => (
 
     <hr />
     
-    {/* For paid subscribers only
-    <FireflySubscription>
-      { ({isLoading, error, subscription}) => {
-
-        if (error) {
-          return <Error error={error} />
-        }
-
-        if (isLoading) {
-          return <p>loading...</p>
-        }
-
-        if (!subscription) {
-          return <div>
-            <p>Only paid subscribers can see what goes here</p>
-            <InternalLink to={`/account`}>Subscribe now</InternalLink>
-          </div>
-        }
-
-        return <div>
-          <p>Super-fancy subscription-only features go here!</p>
-        </div>
-
-      }}
-    </FireflySubscription>  */}
   </Page>
 )
 
-export default PostList
+export default Landing

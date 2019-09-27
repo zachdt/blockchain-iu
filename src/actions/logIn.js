@@ -1,12 +1,7 @@
 import Firebase from 'firebase/app'
-import ReactGA from 'react-ga'
 
 const logIn = () => {
 
-  ReactGA.event({
-    category: 'User',
-    action: 'Log in',
-  })
 
   let provider = new Firebase.auth.GoogleAuthProvider()
   
