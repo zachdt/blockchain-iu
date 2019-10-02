@@ -1,34 +1,9 @@
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    match /posts/{post} {
-      allow read: if true;
-      allow create: if request.auth.uid == request.resource.data.createdBy;
-      allow update, delete: if request.auth.uid == resource.data.createdBy;
-    }
-
-    match /postLikes/{postLike} {
-      allow read: if true;
-      allow create: if request.auth.uid == request.resource.data.createdBy;
-      allow update, delete: if request.auth.uid == resource.data.createdBy;
-    }
-
     match /events/{event} {
       allow read: if true;
-      allow create: if request.auth.email == 'zachdt@gmail.com';
-      allow update, delete: if request.auth.email == 'zachdt@gmail.com';
-    }
-    
-    match /eventHeld/{eventHeld} {
-      allow read: if true;
-      allow create: if request.auth.email == 'zachdt@gmail.com';
-      allow update, delete: if request.auth.email == 'zachdt@gmail.com';
-    }
-
-    match /eventHeld/attend/{attend} {
-      allow read: if true;
-      allow create: if request.auth.email == 'zachdt@gmail.com';
-      allow update, delete: if request.auth.email = 'zachdt@gmail.com';
+      allow create: if request.auth.uid == request.resource.data.createdBy;
+      allow update, delete: if request.auth.uid == resource.data.createdBy;
     }
   }
 }

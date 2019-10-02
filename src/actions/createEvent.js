@@ -3,13 +3,12 @@ import slugify from 'slugify'
 
 import { prepareDocForCreate } from './helpers/firestoreHelpers'
 
-const createPost = values => {
+const createEvent = values => {
 
   values.slug = slugify(values.title, {lower: true})
-  values._likeCount = 0
 
   return Firebase.firestore()
-    .collection('posts')
+    .collection('events')
     .add(prepareDocForCreate(values))
     .then( () => values)
     .catch( error => {
@@ -17,4 +16,4 @@ const createPost = values => {
     })
 }
 
-export default createPost
+export default createEvent

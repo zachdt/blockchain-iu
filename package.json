@@ -1,8 +1,8 @@
 {
-  "name": "firefly",
+  "name": "blockchain-iu",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://demo.getfirefly.org",
+  "homepage": "https://iublockchain.org",
   "dependencies": {
     "firebase": "^6.1.0",
     "react": "^16.4.0",

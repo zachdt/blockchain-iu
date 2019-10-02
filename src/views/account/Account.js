@@ -5,9 +5,19 @@ import FirebaseAuth from '../misc/FirebaseAuth'
 import Error from '../misc/Error'
 import Profile from './Profile'
 import {
+  InternalLink,
+} from '../../styles/links'
+import {
   Page,
 } from '../../styles/layout'
 
+const event = (auth) => {
+  if (auth.email === 'zachdt@gmail.com') {
+    return <InternalLink to="/new">New</InternalLink>
+  } else {
+    return 
+  }
+}
 const Account = () => (
   <Page>
     <FirebaseAuth>
@@ -31,6 +41,7 @@ const Account = () => (
         return <div>
           <Profile auth={auth} />
           <hr />
+          { event(auth) }
         </div>
 
       }}

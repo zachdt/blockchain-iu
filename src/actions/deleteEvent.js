@@ -1,9 +1,9 @@
 import Firebase from 'firebase/app'
 
-const deletePost = post => {
+const deleteEvent = post => {
 
   return Firebase.firestore()
-    .collection('posts')
+    .collection('events')
     .doc(post.id)
     .delete()
     .catch( error => {
@@ -11,4 +11,4 @@ const deletePost = post => {
     })
 }
 
-export default deletePost
+export default deleteEvent

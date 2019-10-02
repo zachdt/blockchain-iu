@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const HeaderFooterWrapper = styled.div`
-  max-width: 500px;
+  max-width: 800px;
   margin: 0 auto;
   display: grid;
   grid-template-rows: max-content auto max-content;
