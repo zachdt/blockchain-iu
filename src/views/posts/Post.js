@@ -14,7 +14,7 @@ import {
 const Post = ({match}) => (
   <Page>
     <FirestoreCollection
-      path={'posts'}
+      path={'events'}
       filter={['slug', '==', match.params.slug]}
     >
       { ({error, isLoading, data}) => {
@@ -30,22 +30,16 @@ const Post = ({match}) => (
           return <Error />
         }
 
-        const post = data[0]
+        const event = data[0]
 
         return <div>
-          <h1>{post.title}</h1>
-          <p>
-            {post._likeCount || 0}
-            {' '}
-            {post._likeCount && post._likeCount === 1 ? 'like' : 'likes'}
-            {' '}
-            <LikeButton post={post} />
-          </p>
-          <p>{post.content}</p>
+          <h1>{event.title}</h1>
+          <p>{event.date}</p>
+          <p>{event.content}</p>
           <FirebaseAuth>
-            { ({auth}) => (
-              auth ? <InternalLink to={`/${post.slug}/edit`}>Edit</InternalLink> : null
-            )}
+            { ({isAdmin}) => {
+              return isAdmin ?  <InternalLink to={`/${event.slug}/edit`}>Edit</InternalLink> : ''
+            } }
           </FirebaseAuth>
         </div>
       }}

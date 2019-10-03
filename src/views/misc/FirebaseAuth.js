@@ -11,6 +11,7 @@ class FirebaseAuth extends React.Component {
     isLoading: true,
     error: null,
     auth: null,
+    isAdmin: false,
   }
 
   componentDidMount() {
@@ -30,6 +31,12 @@ class FirebaseAuth extends React.Component {
       auth,
       error: null,
     })
+
+    if (auth != null && auth.email === 'zachdt@gmail.com') {
+      this.setState({
+        isAdmin: true
+      })
+    }
   }
 
   handleError = error => {

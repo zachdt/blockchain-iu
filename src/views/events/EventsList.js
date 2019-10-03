@@ -14,7 +14,6 @@ const EventsList = () => (
     <hr/>
     <FirestoreCollection
       path={'events'}
-      sort="_likeCount:desc"
     >
       { ({error, isLoading, data}) => {
 
@@ -31,13 +30,10 @@ const EventsList = () => (
         }
 
         return <div>
-          {data.map(post => (
-            <div key={post.id}>
-              <InternalLink to={`/${post.slug}`}>{post.title}</InternalLink>
+          {data.map(event => (
+            <div key={event.id}>
+              <InternalLink to={`/${event.slug}`}>{event.title}</InternalLink>
               <p>
-                {post._likeCount || 0}
-                {' '}
-                {post._likeCount && post._likeCount === 1 ? 'like' : 'likes'}
               </p>
             </div>
           ))}

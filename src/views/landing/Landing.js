@@ -1,6 +1,11 @@
 import React from 'react'
 import { FirestoreCollection } from 'react-firestore'
 
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+
+
+import EventPreview from './EventPreview'
 import Error from '../misc/Error'
 import {
   InternalLink,
@@ -9,46 +14,72 @@ import {
   Page,
 } from '../../styles/layout'
 
-const Landing = () => (
-  <Page>
-    <hr/>
-    <FirestoreCollection
-      path={'events'}
-      sort="_likeCount:desc"
-    >
-      { ({error, isLoading, data}) => {
+const classes = makeStyles({
+  right: {
+    float: 'right'
+  }
+})
 
-        if (error) {
-          return <Error error={error} />
-        }
 
-        if (isLoading) {
-          return <p>loading...</p>
-        }
+export default function Landing () {
+  const styles = classes()
+  return (
+    <Page>
+        <Typography
+          variant="h4"
+          component="h2"
+        >
+          Education
+        </Typography>
+        <hr/>
+        <br/>
+        <Typography
+          variant="h4"
+          component="h2"
+          className={styles.right}
+        >
+          Research
+        </Typography>
+        <br/>
+        <br/>
+        <hr/>
+        <Typography 
+          variant="h3" 
+          component="h1"
+        >
+          Upcoming Events
+        </Typography>
+        <hr/>
+        <FirestoreCollection
+          path={'events'}
+        >
+          { ({error, isLoading, data}) => {
 
-        if (data.length === 0) {
-          return <p>No upcoming events... stay tuned</p>
-        }
+            if (error) {
+              return <Error error={error} />
+            }
 
-        return <div>
-          {data.map(post => (
-            <div key={post.id}>
-              <InternalLink to={`/${post.slug}`}>{post.title}</InternalLink>
-              <p>
-                {post._likeCount || 0}
-                {' '}
-                {post._likeCount && post._likeCount === 1 ? 'like' : 'likes'}
-              </p>
+            if (isLoading) {
+              return <p>loading...</p>
+            }
+
+            if (data.length === 0) {
+              return <p>No upcoming events... stay tuned</p>
+            }
+
+            return <div>
+              {data.map(event => (
+                <div key={event.id}>
+                  <EventPreview event={event}></EventPreview>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-      }}
-    </FirestoreCollection>
+          }}
+        </FirestoreCollection>
 
-    <hr />
-    
-  </Page>
-)
-
-export default Landing
+        <hr />
+      </Page>
+  )
+  
+}

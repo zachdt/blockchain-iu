@@ -1,11 +1,11 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import {createUseStyles} from 'react-jss'
+import { makeStyles } from '@material-ui/core/styles'
 
 import logOut from '../../actions/logOut'
 
-const styles = createUseStyles({
+const styles = makeStyles({
   profilePic: {
     borderRadius: '50%'
   }

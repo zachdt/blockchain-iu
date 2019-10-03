@@ -2,9 +2,9 @@ import React from 'react'
 import { FirestoreCollection } from 'react-firestore'
 
 import Error from '../misc/Error'
-import deletePost from '../../actions/deletePost'
+import deleteEvent from '../../actions/deleteEvent'
 import updatePost from '../../actions/updatePost'
-import PostForm from './PostForm'
+import EventForm from './EventForm'
 import {
   Page,
 } from '../../styles/layout'
@@ -12,7 +12,7 @@ import {
 const PostEdit = ({match, history}) => (
   <Page>
     <FirestoreCollection
-      path={'posts'}
+      path={'events'}
       filter={['slug', '==', match.params.slug]}
     >
       { ({error, isLoading, data}) => {
@@ -28,17 +28,17 @@ const PostEdit = ({match, history}) => (
           return <Error />
         }
 
-        const post = data[0]
+        const event = data[0]
 
         return <div>
-          <PostForm
-            post={post}
-            onSubmit={values => updatePost(post.id, values).then(() => history.push(`/${post.slug}`))}
+          <EventForm
+            event={event}
+            onSubmit={values => updatePost(event.id, values).then(() => history.push(`/${event.slug}`))}
           />
           <br />
           <button
-            onClick={() => deletePost(post).then( () => history.push(`/`))}
-          >Delete post</button>
+            onClick={() => deleteEvent(event).then( () => history.push(`/`))}
+          >Delete event</button>
         </div>
       }}
     </FirestoreCollection>

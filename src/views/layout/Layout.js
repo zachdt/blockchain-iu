@@ -2,7 +2,9 @@
 // check out App.js to see how it's used
 
 import React from 'react'
-import {createUseStyles} from 'react-jss'
+import { makeStyles } from '@material-ui/core/styles'
+
+import accountImg from './g_sign.png'
 
 import logIn from '../../actions/logIn'
 import FirebaseAuth from '../misc/FirebaseAuth'
@@ -15,31 +17,39 @@ import {
   HeaderLink,
 } from '../../styles/links'
 
-const styles = createUseStyles({
+const styles = makeStyles({
   nav: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: '.8em'
   },
   events: {
-    margin: '20px'
+    marginRight: '20px'
   },
   headerImg: {
     width: '30%',
     height: '30%',
-    marginLeft: '-.5em'
+    marginLeft: '-.5em',
   },
   profilePic: {
     borderRadius: '50%',
     marginTop: '.5em'
+  },
+  login: {
+    cursor: 'pointer',
+  },
+  accountImg: {
+    width: '50%',
+    height: '50%'
   }
 })
 
-const Layout = ({children}) => {
+const Layout = ({children}) => {  
   const classes = styles()
 
   return (
-    <HeaderFooterWrapper>
+    <HeaderFooterWrapper >
 
       <Header>
         
@@ -49,6 +59,7 @@ const Layout = ({children}) => {
               className={classes.headerImg}
               src="https://i.imgur.com/QU0ioai.png"
               title="source: imgur.com"
+              alt="Blockchain @ IU"
             />
           </a>
         </HeaderLink>
@@ -59,6 +70,9 @@ const Layout = ({children}) => {
            </HeaderLink>*/}
           {' '}
 
+          <HeaderLink className={classes.events} to="/about">
+            <span>About</span>
+          </HeaderLink>
           <HeaderLink className={classes.events} to="/events">
             <span>Events</span>
           </HeaderLink>
@@ -77,13 +91,13 @@ const Layout = ({children}) => {
                     className={classes.profilePic} 
                     src={auth.photoURL} 
                     alt={auth.displayName} 
-                    width="30" 
-                    height="30" 
+                    width="40" 
+                    height="40" 
                   />
                   </span>
                 </HeaderLink>
               } else {
-                return <button onClick={logIn}>log in</button>
+                return <a className={classes.login} onClick={logIn}><img clsassName={classes.accountImg} src={accountImg} alt={"Account"}/></a>
               }
             }}
           </FirebaseAuth>

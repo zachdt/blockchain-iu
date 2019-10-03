@@ -12,10 +12,10 @@ import {
 
 const PostList = () => (
   <Page>
-    <InternalLink to="/new">New post</InternalLink>
+    <InternalLink to="/new">New event</InternalLink>
     <hr/>
     <FirestoreCollection
-      path={'posts'}
+      path={'event'}
       sort="_likeCount:desc"
     >
       { ({error, isLoading, data}) => {
@@ -29,7 +29,7 @@ const PostList = () => (
         }
 
         if (data.length === 0) {
-          return <p>No posts yet!</p>
+          return <p>No events yet!</p>
         }
 
         return <div>

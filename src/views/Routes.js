@@ -6,9 +6,9 @@ import { Switch, Route } from 'react-router-dom'
 
 import Account from './account/Account'
 import EventsList from './events/EventsList'
-
+import About from './about/About'
 import Landing from './landing/Landing'
-import PostNew from './posts/PostNew'
+import EventNew from './posts/EventNew'
 import Search from './search/Search'
 import PostEdit from './posts/PostEdit'
 import Post from './posts/Post'
@@ -19,8 +19,9 @@ const Routes = () => (
     <Route exact path="/" component={Landing} />
     <Route path="/events" component={EventsList} />
     <Route path="/account" component={Account} />
+    <Route path="/about" component={About} />
 
-    <Route path="/new" component={PostNew} />
+    <Route path="/new" component={EventNew} />
     <Route path="/search" component={Search} />
     <Route path="/:slug/edit" component={PostEdit} />
     <Route path="/:slug" component={Post} />

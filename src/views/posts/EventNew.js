@@ -3,13 +3,13 @@ import React from 'react'
 import FirebaseAuth from '../misc/FirebaseAuth'
 import Error from '../misc/Error'
 import logIn from '../../actions/logIn'
-import createPost from '../../actions/createPost'
-import PostForm from './PostForm'
+import createEvent from '../../actions/createEvent'
+import EventForm from './EventForm'
 import {
   Page,
 } from '../../styles/layout'
 
-const PostNew = ({history}) => (
+const EventNew = ({history}) => (
   <Page>
     <FirebaseAuth>
       { ({isLoading, error, auth}) => {
@@ -24,17 +24,17 @@ const PostNew = ({history}) => (
 
         if (!auth) {
           return <div>
-            <p>You must be logged in to add posts</p>
+            <p>You must be logged in to add events</p>
             <button onClick={logIn}>log in</button>
           </div>
         }
 
-        return <PostForm
-          onSubmit={values => createPost(values).then(post => history.push(`/${post.slug}`))}
+        return <EventForm
+          onSubmit={values => createEvent(values).then(event => history.push(`/${event.slug}`))}
         />
       }}
     </FirebaseAuth>
   </Page>
 )
 
-export default PostNew
+export default EventNew
