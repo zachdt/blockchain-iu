@@ -1,4 +1,6 @@
-A modern web-app boilerplate with Create React App and Firebase. Focused on simplicity for new devs, rapid prototyping, and smallish projects.
+Blockchain @ IU web app built using the firefly boilerplate (React, Firebase).
+
+Added material-ui components and custom database functions.
 
 ### **Full documentation at [getfirefly.org](http://getfirefly.org)**
 
