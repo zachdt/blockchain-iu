@@ -8,15 +8,9 @@ admin.initializeApp(functions.config().firebase)
 // TODO - remove once this is the firebase default behavior
 admin.firestore().settings({timestampsInSnapshots: true})
 
-const postLikes = require('./lib/postLikes')
-const search = require('./lib/search')
+/*const search = require('./lib/search')
 
 exports.updatePostInSearchIndex = functions
   .firestore
-  .document('posts/{postId}')
-  .onWrite(search.updatePostInSearchIndex)
-
-exports.updatePostLikeCount = functions
-  .firestore
-  .document('postLikes/{postLikeId}')
-  .onWrite(postLikes.updatePostLikeCount)
+  .document('events/{eventId}')
+  .onWrite(search.updatePostInSearchIndex)*/

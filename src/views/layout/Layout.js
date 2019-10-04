@@ -4,7 +4,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
-import accountImg from './g_sign.png'
+import Account from './account.svg'
 
 import logIn from '../../actions/logIn'
 import FirebaseAuth from '../misc/FirebaseAuth'
@@ -22,7 +22,7 @@ const styles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: '.8em'
+    marginTop: '2em'
   },
   events: {
     marginRight: '20px'
@@ -39,9 +39,13 @@ const styles = makeStyles({
   login: {
     cursor: 'pointer',
   },
-  accountImg: {
-    width: '50%',
-    height: '50%'
+  loginG: {
+    marginRight: '-10em',
+    maringTop: '1rem',
+  },
+  noLink: {
+    textDecoration: 'none',
+    color: 'black'
   }
 })
 
@@ -87,27 +91,35 @@ const Layout = ({children}) => {
               if (auth) {
                 return <HeaderLink to={`/account`}>
                   <span role="img" aria-label="account">
-                  <img 
-                    className={classes.profilePic} 
-                    src={auth.photoURL} 
-                    alt={auth.displayName} 
-                    width="40" 
-                    height="40" 
-                  />
+                    <img 
+                      className={classes.profilePic} 
+                      src={auth.photoURL} 
+                      alt={auth.displayName} 
+                      width="40" 
+                      height="40" 
+                    />
                   </span>
                 </HeaderLink>
               } else {
-                return <a className={classes.login} onClick={logIn}><img clsassName={classes.accountImg} src={accountImg} alt={"Account"}/></a>
+                return (
+                  <a className={classes.login} onClick={logIn}>
+                    <img
+                      className={classes.loginG}
+                      src={Account} 
+                      alt={"Account"}
+                    />
+                  </a>
+                )
               }
             }}
           </FirebaseAuth>
         </div>
       </Header>
-
       {children}
 
       <Footer>
-        © {(new Date()).getFullYear()}
+        © {(new Date()).getFullYear()}<br/>
+        <p>by <a className={classes.noLink} href="https://github.com/zachdt" target="_blank">zachdt</a></p>
       </Footer>
 
     </HeaderFooterWrapper>

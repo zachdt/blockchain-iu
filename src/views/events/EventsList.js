@@ -1,6 +1,8 @@
 import React from 'react'
 import { FirestoreCollection } from 'react-firestore'
 
+import EventPreview from '../posts/EventPreview'
+
 import Error from '../misc/Error'
 import {
   InternalLink,
@@ -32,9 +34,7 @@ const EventsList = () => (
         return <div>
           {data.map(event => (
             <div key={event.id}>
-              <InternalLink to={`/${event.slug}`}>{event.title}</InternalLink>
-              <p>
-              </p>
+              <EventPreview event={event}/>
             </div>
           ))}
         </div>

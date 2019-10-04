@@ -7,6 +7,9 @@
 
 import React from 'react'
 
+import Button from '@material-ui/core/Button'
+
+
 import {
   FormRow,
   FormLabel,
@@ -65,11 +68,11 @@ class EventForm extends React.Component {
         </FormRow>
 
         <FormRow>
-          <FormLabel for="rsvp">Image Link</FormLabel>
+          <FormLabel for="rsvp">RSVP Link</FormLabel>
           <TextInput type="text" name="rsvp" defaultValue={this.props.event ? this.props.event.rsvp : ''} required />
         </FormRow>
 
-        <button type="submit">Save Event</button>
+        <Button type="submit">Save Event</Button>
       </form>
     )
   }

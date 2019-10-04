@@ -9,10 +9,11 @@ import EventsList from './events/EventsList'
 import About from './about/About'
 import Landing from './landing/Landing'
 import EventNew from './posts/EventNew'
-import Search from './search/Search'
-import PostEdit from './posts/PostEdit'
-import Post from './posts/Post'
+import EventEdit from './posts/EventEdit'
+import Event from './posts/Event'
 import Error from './misc/Error'
+
+import Search from './search/Search'
 
 const Routes = () => (
   <Switch>
@@ -22,9 +23,13 @@ const Routes = () => (
     <Route path="/about" component={About} />
 
     <Route path="/new" component={EventNew} />
+
+    <Route path="/:slug/edit" component={EventEdit} />
+    <Route path="/:slug" component={Event} />
+
     <Route path="/search" component={Search} />
-    <Route path="/:slug/edit" component={PostEdit} />
-    <Route path="/:slug" component={Post} />
+
+
     <Route component={Error} />
   </Switch>
 )

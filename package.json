@@ -5,12 +5,12 @@
   "homepage": "https://iublockchain.org",
   "dependencies": {
     "@material-ui/core": "^4.5.0",
+    "eslint-plugin-promise": "^4.2.1",
     "firebase": "^6.1.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-firestore": "^0.8.1",
     "react-instantsearch-dom": "^5.2.3",
-    "react-jss": "^10.0.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "react-transition-group": "^2.3.1",
@@ -23,5 +23,8 @@
     "dev": "  sh -ac '. ./.env.dev;   firebase use dev   && react-scripts build && firebase deploy'",
     "stage": "sh -ac '. ./.env.stage; firebase use stage && react-scripts build && firebase deploy'",
     "live": " sh -ac '. ./.env.live;  firebase use live  && react-scripts build && firebase deploy'"
+  },
+  "engines": {
+    "node": "10.16.3"
   }
 }

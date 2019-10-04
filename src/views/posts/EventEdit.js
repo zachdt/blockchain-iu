@@ -2,16 +2,17 @@ import React from 'react'
 import { FirestoreCollection } from 'react-firestore'
 
 import Error from '../misc/Error'
-import FirebaseAuth from '../misc/FirebaseAuth'
-import LikeButton from './LikeButton'
-import {
-  InternalLink,
-} from '../../styles/links'
+import deleteEvent from '../../actions/deleteEvent'
+import updateEvent from '../../actions/updateEvent'
+import EventForm from './EventForm'
+
+import Button from '@material-ui/core/Button'
+
 import {
   Page,
 } from '../../styles/layout'
 
-const Post = ({match}) => (
+const EventEdit = ({match, history}) => (
   <Page>
     <FirestoreCollection
       path={'events'}
@@ -25,7 +26,7 @@ const Post = ({match}) => (
         if (isLoading) {
           return <p>loading...</p>
         }
-
+        
         if (data.length === 0) {
           return <Error />
         }
@@ -33,18 +34,18 @@ const Post = ({match}) => (
         const event = data[0]
 
         return <div>
-          <h1>{event.title}</h1>
-          <p>{event.date}</p>
-          <p>{event.content}</p>
-          <FirebaseAuth>
-            { ({isAdmin}) => {
-              return isAdmin ?  <InternalLink to={`/${event.slug}/edit`}>Edit</InternalLink> : ''
-            } }
-          </FirebaseAuth>
+          <EventForm
+            event={event}
+            onSubmit={values => updateEvent(event.id, values).then(() => history.push(`/${event.slug}`))}
+          />
+          <br />
+          <Button
+            onClick={() => deleteEvent(event).then( () => history.push(`/`))}
+          >Delete event</Button>
         </div>
       }}
     </FirestoreCollection>
   </Page>
 )
 
-export default Post
+export default EventEdit

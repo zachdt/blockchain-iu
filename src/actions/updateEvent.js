@@ -1,10 +1,10 @@
 import Firebase from 'firebase/app'
 import { prepareDocForUpdate } from './helpers/firestoreHelpers'
 
-const updatePost = (postId, values) => {
+const updateEvent = (postId, values) => {
 
   return Firebase.firestore()
-    .collection('posts')
+    .collection('events')
     .doc(postId)
     .update(prepareDocForUpdate(values))
     .catch( error => {
@@ -12,4 +12,4 @@ const updatePost = (postId, values) => {
     })
 }
 
-export default updatePost
+export default updateEvent
