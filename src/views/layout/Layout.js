@@ -4,6 +4,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
+import { NavLink } from 'react-router-dom'
+
 import Account from './account.svg'
 
 import logIn from '../../actions/logIn'
@@ -18,30 +20,37 @@ import {
 } from '../../styles/links'
 
 const styles = makeStyles({
+  headCont: {
+    marginLeft: 'auto',
+  },
   nav: {
+    float: 'right',
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: '2em'
+    marginTop: '3em',
+    marginRight: 'auto'
   },
   events: {
-    marginRight: '20px'
+    color: 'black',
+    marginRight: '20px',
+    textDecoration: 'none',
+    fontSize: '1.2rem'
   },
   headerImg: {
-    width: '30%',
-    height: '30%',
-    marginLeft: '-.5em',
+    width: '15em',
+    height: '6em',
+    marginLeft: '-1em',
   },
   profilePic: {
     borderRadius: '50%',
-    marginTop: '.5em'
+    marginTop: '-.3em'
   },
   login: {
     cursor: 'pointer',
   },
   loginG: {
-    marginRight: '-10em',
-    maringTop: '1rem',
+    marginRight: '0em',
+    marginTop: '0em',
   },
   noLink: {
     textDecoration: 'none',
@@ -56,8 +65,7 @@ const Layout = ({children}) => {
     <HeaderFooterWrapper >
 
       <Header>
-        
-        <HeaderLink to="/">
+        <HeaderLink className={classes.headCont} to="/">
           <a>
             <img
               className={classes.headerImg}
@@ -69,17 +77,13 @@ const Layout = ({children}) => {
         </HeaderLink>
 
         <div className={classes.nav} style={{float: 'right'}}>
-          {/*<HeaderLink to="/search">
-            <span role="img" aria-label="search">🔎</span>
-           </HeaderLink>*/}
-          {' '}
 
-          <HeaderLink className={classes.events} to="/about">
+          <NavLink className={classes.events} activeStyle={{ color: 'white' }} to="/about">
             <span>About</span>
-          </HeaderLink>
-          <HeaderLink className={classes.events} to="/events">
+          </NavLink>
+          <NavLink className={classes.events} activeStyle={{ color: 'white' }} to="/events">
             <span>Events</span>
-          </HeaderLink>
+          </NavLink>
           <FirebaseAuth>
             { ({isLoading, error, auth}) => {
               if (isLoading) {
@@ -95,8 +99,8 @@ const Layout = ({children}) => {
                       className={classes.profilePic} 
                       src={auth.photoURL} 
                       alt={auth.displayName} 
-                      width="40" 
-                      height="40" 
+                      width="30em" 
+                      height="30em" 
                     />
                   </span>
                 </HeaderLink>
@@ -118,6 +122,8 @@ const Layout = ({children}) => {
       {children}
 
       <Footer>
+      <hr />
+
         © {(new Date()).getFullYear()}<br/>
         <p>by <a className={classes.noLink} href="https://github.com/zachdt" target="_blank">zachdt</a></p>
       </Footer>

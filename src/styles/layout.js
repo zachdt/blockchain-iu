@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 const HeaderFooterWrapper = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 1000px;
+  margin: auto auto;
   display: grid;
-  grid-template-rows: max-content auto max-content;
+  grid-template-rows: max-content auto auto;
   min-height: 100vh;
 `
 const Header = styled.div`

@@ -21,9 +21,6 @@ const Research = 'https://i.imgur.com/05f9jC3.png'
 const classes = makeStyles({
   right: {
     float: 'center',
-    justifyContent: 'right',
-    alignContent: 'right',
-    marginTop: '0em'
   },
   flex: {
     flex: 'row',
@@ -37,10 +34,6 @@ const classes = makeStyles({
     height: '60%',
     padding: '2em'
   },
-  images2: {
-    width: '50%',
-    height: '50%',
-  }
 })
 
 
@@ -65,32 +58,28 @@ export default function Landing () {
         >
           Instructing the IU community on blockchain ideation, engineering, and economics since 2017.
         </Typography>
-        <img className={styles.images1} src={Workshops}></img>
+        <img className={styles.images1} src={Workshops} />
       </div>
       <br/>
-      <hr/>
       <Typography
         variant="h4"
         component="h2"
-        className={styles.right}
       >
         Events and Meetups
       </Typography>
       <hr/>
       <br/>
       <div className={styles.flex}>
-      <img className={styles.images1} src={Events}></img>
-
+      < img className={styles.images1} src={Events} />
         <Typography
           variant="h6"
           component="p"
           className={styles.text}
         >
-          Meet with other passionate students, and network with blockchain professionals from around the country.
+          Team up with other passionate students, and network with blockchain professionals from around the country.
         </Typography>
       </div>
       <br/>
-      <hr/>
       <Typography
         variant="h4"
         component="h2"
@@ -108,12 +97,12 @@ export default function Landing () {
         >
           Innovate at the bleeding edge of technology though open source contribution, technology consulting, and academic research.
         </Typography>
-        <img className={styles.images1} src={Research}></img>
+        <img className={styles.images1} src={Research} />
       </div>
       <br/>
       <br/>
-      <Typography 
-        variant="h3" 
+      <Typography
+        variant="h3"
         component="h1"
       >
         Upcoming Events
@@ -139,15 +128,13 @@ export default function Landing () {
           return <div>
             {data.map(event => (
               <div key={event.id}>
-                <EventPreview event={event}></EventPreview>
+                <EventPreview event={event} />
               </div>
             ))}
           </div>
-
         }}
       </FirestoreCollection>
 
-      <hr />
     </Page>
   )
   

@@ -51,16 +51,27 @@ const Event = ({match}) => (
             </Typography>
             <br/>
             <Typography
+              variant="h6"
+            >
+              {event.time}
+            </Typography>
+            <br/>
+            <Typography
+              variant="h6"
+            >
+              Location {event.loc}
+            </Typography>
+            <br/>
+            <Typography
               variant="body1"
             >
               {event.content}
             </Typography>
             <br/>
-            <p>Location: {event.loc}</p>
-            <br/>
             <hr/>
             <Button 
-              href={event.rsvp} 
+              href={event.rsvp}
+              target="_blank"
               size="medium"
             >Register</Button>
             <FirebaseAuth>
