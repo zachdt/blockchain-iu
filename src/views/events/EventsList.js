@@ -30,7 +30,7 @@ const EventsList = () => {
           variant="h3" 
           component="h1"
         >
-          Event List
+          Events
         </Typography>
       <hr/>
       <FirestoreCollection

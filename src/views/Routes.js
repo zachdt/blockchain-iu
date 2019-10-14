@@ -12,6 +12,7 @@ import EventNew from './posts/EventNew'
 import EventEdit from './posts/EventEdit'
 import Event from './posts/Event'
 import Error from './misc/Error'
+import Courses from './courses/Courses'
 
 import Search from './search/Search'
 
@@ -21,6 +22,7 @@ const Routes = () => (
     <Route path="/events" component={EventsList} />
     <Route path="/account" component={Account} />
     <Route path="/about" component={About} />
+    <Route path="/courses" component={Courses} />
 
     <Route path="/new" component={EventNew} />
 

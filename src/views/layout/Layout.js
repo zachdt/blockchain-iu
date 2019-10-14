@@ -78,11 +78,14 @@ const Layout = ({children}) => {
 
         <div className={classes.nav} style={{float: 'right'}}>
 
-          <NavLink className={classes.events} activeStyle={{ color: 'white' }} to="/about">
+          <NavLink className={classes.events} activeStyle={{ textDecoration: 'underline' }} to="/about">
             <span>About</span>
           </NavLink>
-          <NavLink className={classes.events} activeStyle={{ color: 'white' }} to="/events">
+          <NavLink className={classes.events} activeStyle={{ textDecoration: 'underline' }} to="/events">
             <span>Events</span>
+          </NavLink>
+          <NavLink className={classes.events} activeStyle={{ textDecoration: 'underline' }} to="/courses">
+            <span>Courses</span>
           </NavLink>
           <FirebaseAuth>
             { ({isLoading, error, auth}) => {
