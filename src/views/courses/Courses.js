@@ -40,7 +40,7 @@ const Courses = () => {
               Business of Blockchain
             </Typography>
             <br/>
-            <Button disabled href="">Syllabus</Button>
+            <Button href="https://docs.google.com/document/d/1dvxUKS20WlTdHogcLkcpT2W0VaB6WZHWjKu9xajj0_Y/edit?usp=sharing" target="_blank">Syllabus</Button>
             <Button href="https://forms.gle/D4YUcXv44bMqD59i7" target="_blank">Register</Button>
             </div>
         
@@ -53,7 +53,7 @@ const Courses = () => {
             </Typography>
             <br/>
 
-            <Button disabled href="">Syllabus</Button>
+            <Button href="https://docs.google.com/document/d/1_3hmIpVEpk94fJD_zWG33We-N4giUrEjSBFym6mWsms/edit?usp=sharing" target="_blank">Syllabus</Button>
             <Button href="https://forms.gle/oNvGU6rdhdVaEBvt9" target="_blank">Register</Button>
           </div>
           </div>
