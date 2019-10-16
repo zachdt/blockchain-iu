@@ -41,65 +41,7 @@ export default function Landing () {
   const styles = classes()
   return (
     <Page>
-      <br/>
-      <Typography
-        variant="h4"
-        component="h2"
-      >
-        Workshops and Certifications
-      </Typography>
       <hr/>
-      <br/>
-      <div className={styles.flex}>
-        <Typography
-          variant="h6"
-          component="p"
-          className={styles.text}
-        >
-          Instructing the IU community on blockchain ideation, engineering, and economics since 2017.
-        </Typography>
-        <img className={styles.images1} src={Workshops} />
-      </div>
-      <br/>
-      <Typography
-        variant="h4"
-        component="h2"
-      >
-        Events and Meetups
-      </Typography>
-      <hr/>
-      <br/>
-      <div className={styles.flex}>
-      < img className={styles.images1} src={Events} />
-        <Typography
-          variant="h6"
-          component="p"
-          className={styles.text}
-        >
-          Team up with other passionate students, and network with blockchain professionals from around the country.
-        </Typography>
-      </div>
-      <br/>
-      <Typography
-        variant="h4"
-        component="h2"
-        className={styles.right}
-      >
-        Research and Development
-      </Typography>
-      <hr/>
-      <br/>
-      <div className={styles.flex}>
-        <Typography
-          variant="h6"
-          component="p"
-          className={styles.text}
-        >
-          Innovate at the bleeding edge of technology though open source contribution, technology consulting, and academic research.
-        </Typography>
-        <img className={styles.images1} src={Research} />
-      </div>
-      <br/>
       <br/>
       <Typography
         variant="h3"
@@ -126,15 +68,77 @@ export default function Landing () {
           }
 
           return <div>
-            {data.map(event => (
-              <div key={event.id}>
-                <EventPreview event={event} />
-              </div>
-            ))}
+            {data.map(event => {
+              if (event.past === '') {
+                <div key={event.id}>
+                  <EventPreview event={event} />
+                </div>
+              } else {
+                return (
+                  <p>No upcoming events... stay tuned</p>
+                )
+              }
+            })}
           </div>
         }}
       </FirestoreCollection>
-
+      <br/>
+      <Typography
+        variant="h4"
+        component="h2"
+      >
+      </Typography>
+      <hr/>
+      <br/>
+      <div className={styles.flex}>
+        <Typography
+          variant="h5"
+          component="p"
+          className={styles.text}
+        >
+          Instructing the IU community on blockchain ideation, engineering, and economics since 2017.
+        </Typography>
+        <img className={styles.images1} src={Workshops} />
+      </div>
+      <br/>
+      <Typography
+        variant="h4"
+        component="h2"
+      >
+      </Typography>
+      <hr/>
+      <br/>
+      <div className={styles.flex}>
+      < img className={styles.images1} src={Events} />
+        <Typography
+          variant="h5"
+          component="p"
+          className={styles.text}
+        >
+          Team up with other passionate students, and network with blockchain professionals from around the country.
+        </Typography>
+      </div>
+      <br/>
+      <Typography
+        variant="h4"
+        component="h2"
+        className={styles.right}
+      >
+      </Typography>
+      <hr/>
+      <br/>
+      <div className={styles.flex}>
+        <Typography
+          variant="h5"
+          component="p"
+          className={styles.text}
+        >
+          Innovate at the bleeding edge of technology though open source contribution, technology consulting, and academic research.
+        </Typography>
+        <img className={styles.images1} src={Research} />
+      </div>
+      <br/>
+      <hr/>
     </Page>
   )
   

@@ -21,7 +21,7 @@ class EventForm extends React.Component {
 
   onSubmit = event => {
     event.preventDefault()
-    const {title, content, date, time, loc, img, rsvp} = event.target.elements
+    const {title, content, date, time, loc, img, rsvp, past} = event.target.elements
     const values = {
       title: title.value,
       content: content.value,
@@ -30,11 +30,12 @@ class EventForm extends React.Component {
       loc: loc.value,
       img: img.value,
       rsvp: rsvp.value,
+      past: past.value
     }
     this.props.onSubmit(values)
   }
 
-  render() {    
+  render() {
     return (
       <form onSubmit={this.onSubmit}>
         <FormRow>
@@ -70,6 +71,11 @@ class EventForm extends React.Component {
         <FormRow>
           <FormLabel for="rsvp">RSVP Link</FormLabel>
           <TextInput type="text" name="rsvp" defaultValue={this.props.event ? this.props.event.rsvp : ''} required />
+        </FormRow>
+
+        <FormRow>
+          <FormLabel for="past">Already done?</FormLabel>
+          <TextInput type="text" name="past" defaultValue={this.props.event ? this.props.event.past : ''} />
         </FormRow>
 
         <Button type="submit">Save Event</Button>

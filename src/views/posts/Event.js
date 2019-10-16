@@ -14,6 +14,26 @@ import {
   Page,
 } from '../../styles/layout'
 
+const Registration = ({event}) => {
+  if (event.past === '') {
+    return (
+      <Button
+        href={event.rsvp}
+        target="_blank"
+        size="medium"
+      >Register</Button>
+    )
+  } else {
+    return (
+    <Button
+      disabled
+      size="medium"
+    >Registration Closed</Button>
+    )
+    
+  }  
+}
+
 const Event = ({match}) => (
   <Page>
     <FirestoreCollection
@@ -69,11 +89,7 @@ const Event = ({match}) => (
             </Typography>
             <br/>
             <hr/>
-            <Button 
-              href={event.rsvp}
-              target="_blank"
-              size="medium"
-            >Register</Button>
+            <Registration event={event} />
             <FirebaseAuth>
               { ({isAdmin}) => {
                 return isAdmin ?  <Button><InternalLink to={`/${event.slug}/edit`}>Edit</InternalLink></Button> : ''

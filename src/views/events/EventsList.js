@@ -19,8 +19,6 @@ const classes = makeStyles({
   }
 })
 
-
-
 const EventsList = () => {
   const styles = classes()
 

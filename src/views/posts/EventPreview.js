@@ -28,6 +28,22 @@ const classes = makeStyles({
   }
 })
 
+const Registration = ({event}) => {
+  if (event.past === '') {
+    return (
+      <CardActions>
+        <Button
+          href={event.rsvp}
+          target="_blank"
+          size="medium"
+        >Register</Button>
+      </CardActions>
+    )
+  } else {
+    return <div/>
+  }
+}
+
 const EventPreview = ({event}) => {
   const styles = classes()
   const image = event.img
@@ -54,16 +70,7 @@ const EventPreview = ({event}) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button 
-          className={styles.center}
-          href={event.rsvp}
-          target="_blank"
-          size="small"
-        >
-          Register
-        </Button>
-      </CardActions>
+      <Registration event={event} />
     </Card>
   )
 }
